@@ -109,6 +109,7 @@ let score = 0;
 let questionNumber = 0;
 
 function startQuiz () {
+ $('.quiz_container').hide()
  $('button').click('submit', function (event) {
     console.log('button working');
     event.preventDefault();
@@ -118,11 +119,24 @@ function startQuiz () {
     )}
 
 function renderQuestion () {
-    let question = STORE[0].question
-    console.log(question)
+    $('.start_quiz').click(function() {
+        $('.quiz_container').toggle('slow', function () {
+            $('.quiz_display').text(STORE[questionNumber].question)
+            $('.answer_1').text(STORE[questionNumber].answers[0])
+            $('.answer_2').text(STORE[questionNumber].answers[1])
+            $('.answer_3').text(STORE[questionNumber].answers[2])
+            $('.answer_4').text(STORE[questionNumber].answers[3])
+    $('.submit_button').click(function() {
+        // $('.quiz_container').fadeOut('fast')
+        nextQuestion()
+    })
+        })
+    })
 }
 
-
+function nextQuestion () {
+    questionNumber++
+}
 
 
 //Where all the functions should be called

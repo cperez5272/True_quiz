@@ -36,3 +36,25 @@ button {
     height: 90%;
     margin: auto;
 }
+.quiz_display {
+    color: black;
+    background-color: #9479E8;
+    border: black solid 2px;
+    text-align: center;
+    width: 95%;
+    height: 95%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 15px;
+}
+.answer_form {
+    color: black;
+    background-color: #9479E8;
+    border: black solid 2px;
+    text-align: center;
+    padding: 20px;
+    margin: auto;
+    margin-top: 25px;
+    height: 80%;
+    height: 80%;
+}
