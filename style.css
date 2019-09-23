@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("https://i.kym-cdn.com/photos/images/original/001/169/088/c15.png");
+    background: cover; 
+}
+button {
+    padding: 15px;
+    background: orange;
+    border: black solid;
+    font-weight: 800;
+    text-align: center;
+    margin-top: px;
+    margin: auto;
+    position: absolute;
+    left: 45%;
+    bottom: 7%;
+}
+
+/* page one */
+.starting_header {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -21px;
+    color: whitesmoke;
+}
+.starting_quiz {
+    text-align: center;
+    color: whitesmoke;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+}
