@@ -7,7 +7,6 @@
 
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="app.js"></script>
 </head>
 <body>
 
@@ -20,6 +19,10 @@
         <h2>You think you got what it takes? If you can pass this then you surely have the IQ to understand what  happened at the streets of Philadelphia from 3:59 to 4:13.</h2>
         <button class="start_quiz">Start Quiz</button>
     </header>
+
+    <section class="scoreboard">       
+            <p class="tally"> Question: <span class="question_number">0</span>/10 <span>Score: </span><span class="score_number">0</span></p>     
+    </section>
 
     <div class="quiz_container">
         <h1 class="quiz_display"></h1>
@@ -35,5 +38,8 @@
             <button class="submit_button">Submit Answer</button>
         </form>
     </div>
+
+
+    <script src="app.js"></script>
 </body>
 </html>
