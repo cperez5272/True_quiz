@@ -107,8 +107,10 @@ const STORE = [
 //set varaibles for both questions and score
 let score = 0;
 let questionNumber = 0;
+let userSelected = 0;
 
 function startQuiz () {
+    console.log('startQuiz working fine')
     $('.quiz_container').hide()
     $('.scoreboard').hide()
     $('.start_quiz').click('submit', function (event) {
@@ -123,8 +125,9 @@ function startQuiz () {
 }
 
 function renderQuestion () {
-        $('.scoreboard').show()
-        $('.quiz_container').show('slow', function () {
+    console.log('renderQuestion working fine')
+    $('.scoreboard').show()
+    $('.quiz_container').show('slow', function () {
             $('.quiz_display').text(STORE[questionNumber].question)
             $('.answer_1').text(STORE[questionNumber].answers[0])
             $('.answer_2').text(STORE[questionNumber].answers[1])
@@ -137,33 +140,36 @@ function renderQuestion () {
     })
 }
 
-function wrongAnswer () {
-    $('.response').html(`
-    <h3>Your answer was wrong!</h3>
-    <img src="https://thumbs.gfycat.com/ClearQualifiedAfricanparadiseflycatcher-size_restricted.gif" alt= "Old man screaming in fear" class= "images">
-    <p>The correct answer is actually:</p>
-    <p>${STORE[questionNumber].correctAnswer}</p>
-    <button>Continue</button>`
-    )
-}
+// function wrongAnswer () {
+//     console.log('wrongAnswer is working fine')
+//     $('.response').html(`
+//     <h3>Your answer was wrong!</h3>
+//     <img src="https://thumbs.gfycat.com/ClearQualifiedAfricanparadiseflycatcher-size_restricted.gif" alt= "Old man screaming in fear" class= "images">
+//     <p>The correct answer is actually:</p>
+//     <p>${STORE[questionNumber].correctAnswer}</p>
+//     <button>Continue</button>`
+//     )
+// }
 
-function rightAnswer () {
-    $('.response').html(`
-    <h3>Your answer was right!</h3>
-    <img src="https://miro.medium.com/max/2560/1*U291PytRexmkC81_cqArNg.jpeg" alt= "Two guys posing!" class= "images">
-    <button>Continue</button>`
-    )
-    updateScore() // work on that in a bit, but it should be called here.
-}
+// function rightAnswer () {
+//     console.log('rightAnswer is working fine')
+//     $('.response').html(`
+//     <h3>Your answer was right!</h3>
+//     <img src="https://miro.medium.com/max/2560/1*U291PytRexmkC81_cqArNg.jpeg" alt= "Two guys posing!" class= "images">
+//     <button>Continue</button>`
+//     )
+//     updateScore() // work on that in a bit, but it should be called here.
+// }
+
+console.log (STORE[questionNumber].answers[userSelected] === STORE[questionNumber].correctAnswer)
 
 function submitAnswer () {
-    $('.submit_button').on('click', function (event) {
-        if (STORE[questionNumber].answers === STORE[questionNumber].correctAnswer) {
-            console.log('yea yea yea')
-            rightAnswer()
+    $('.submit_button').on('click', function () {
+        console.log('beep beep')
+        if (STORE[questionNumber].answers[1]) {
+            console.log('you found the right answer')
         } else {
-            console.log('nah nah nah')
-            wrongAnswer()
+            console.log('you did not find the right answer')
         }
     })
 }
@@ -176,5 +182,6 @@ function nextQuestion () {
 //Where all the functions should be called
 function makeQuiz () {
     startQuiz();
+    submitAnswer()
 }
 $(makeQuiz)
