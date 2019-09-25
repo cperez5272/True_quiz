@@ -107,7 +107,7 @@ const STORE = [
 //set varaibles for both questions and score
 let score = 0;
 let questionNumber = 0;
-let userSelected = 0;
+let userSelected = 1;
 
 function startQuiz () {
     console.log('startQuiz working fine')
@@ -128,11 +128,18 @@ function renderQuestion () {
     console.log('renderQuestion working fine')
     $('.scoreboard').show()
     $('.quiz_container').show('slow', function () {
-            $('.quiz_display').text(STORE[questionNumber].question)
-            $('.answer_1').text(STORE[questionNumber].answers[0])
-            $('.answer_2').text(STORE[questionNumber].answers[1])
-            $('.answer_3').text(STORE[questionNumber].answers[2])
-            $('.answer_4').text(STORE[questionNumber].answers[3])
+        $('.quiz_display').text(STORE[questionNumber].question)
+        $('.answer_1').text(STORE[questionNumber].answers[0])
+        $('.answer_1').val(STORE[questionNumber].answers[0])
+
+        $('.answer_2').text(STORE[questionNumber].answers[1])
+        $('.answer_2').val(STORE[questionNumber].answers[1])
+
+        $('.answer_3').text(STORE[questionNumber].answers[2])
+        $('.answer_3').val(STORE[questionNumber].answers[2])
+
+        $('.answer_4').text(STORE[questionNumber].answers[3])
+        $('.answer_4').val(STORE[questionNumber].answers[3])
         $(".answer_form").submit(function(event) {
             event.preventDefault()
             $('.answer').prop('checked', false)
@@ -166,7 +173,7 @@ console.log (STORE[questionNumber].answers[userSelected] === STORE[questionNumbe
 function submitAnswer () {
     $('.submit_button').on('click', function () {
         console.log('beep beep')
-        if (STORE[questionNumber].answers[1]) {
+        if (STORE[questionNumber].correctAnswer === $("form input:checked").val('.answer')) {
             console.log('you found the right answer')
         } else {
             console.log('you did not find the right answer')
