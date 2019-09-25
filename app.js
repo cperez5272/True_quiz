@@ -113,12 +113,13 @@ function startQuiz () {
     console.log('startQuiz working fine')
     $('.quiz_container').hide()
     $('.scoreboard').hide()
+    $('.rightAnswer').hide()
+    $('.wrongAnswer').hide()
     $('.start_quiz').click('submit', function (event) {
         console.log('button working');
         $('header').fadeOut('fast');
         renderQuestion();
         $('.submit_button').click(function() {
-        // $('.quiz_container').fadeOut('fast')
             nextQuestion()
         })
     })
@@ -147,36 +148,46 @@ function renderQuestion () {
     })
 }
 
-// function wrongAnswer () {
-//     console.log('wrongAnswer is working fine')
-//     $('.response').html(`
-//     <h3>Your answer was wrong!</h3>
-//     <img src="https://thumbs.gfycat.com/ClearQualifiedAfricanparadiseflycatcher-size_restricted.gif" alt= "Old man screaming in fear" class= "images">
-//     <p>The correct answer is actually:</p>
-//     <p>${STORE[questionNumber].correctAnswer}</p>
-//     <button>Continue</button>`
-//     )
-// }
+function wrongAnswer () {
+    console.log('wrongAnswer is working fine')
+    $('.quiz_display').hide()
+    $('.tally').hide()
+    $('.answer_form').hide()
+    $('.wrongAnswer').show()
+    $('p').text(STORE[questionNumber].correctAnswer)
+    $('.next_button').on('click', function () {
+        console.log('next button working fine')
+        $('.quiz_display').show()
+        $('.tally').show()
+        $('.answer_form').show()
+        $('.wrongAnswer').hide()
+    })
+}
 
-// function rightAnswer () {
-//     console.log('rightAnswer is working fine')
-//     $('.response').html(`
-//     <h3>Your answer was right!</h3>
-//     <img src="https://miro.medium.com/max/2560/1*U291PytRexmkC81_cqArNg.jpeg" alt= "Two guys posing!" class= "images">
-//     <button>Continue</button>`
-//     )
-//     updateScore() // work on that in a bit, but it should be called here.
-// }
-
-console.log (STORE[questionNumber].answers[userSelected] === STORE[questionNumber].correctAnswer)
+function rightAnswer () {
+    console.log('rightAnswer is working fine')
+    $('.quiz_display').hide()
+    $('.tally').hide()
+    $('.answer_form').hide()
+    $('.rightAnswer').show()
+    $('.next_button').on('click', function () {
+        console.log('next button working fine')
+        $('.quiz_display').show()
+        $('.tally').show()
+        $('.answer_form').show()
+        $('.rightAnswer').hide()
+    })
+}
 
 function submitAnswer () {
     $('.submit_button').on('click', function () {
         console.log('beep beep')
-        if (STORE[questionNumber].correctAnswer === $("form input:checked").val('.answer')) {
+        if (STORE[questionNumber].correctAnswer === $("form input:checked").val()) {
             console.log('you found the right answer')
+            rightAnswer()
         } else {
-            console.log('you did not find the right answer')
+            console.log('you found the wrong answer')
+            wrongAnswer()
         }
     })
 }
@@ -189,6 +200,6 @@ function nextQuestion () {
 //Where all the functions should be called
 function makeQuiz () {
     startQuiz();
-    submitAnswer()
+    submitAnswer();
 }
 $(makeQuiz)

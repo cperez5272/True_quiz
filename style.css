@@ -18,7 +18,7 @@ button {
     left: 45%;
     bottom: 7%;
 }
-.scoreboard {
+.scoreboard p {
     font-size: 1cm;
     text-align: center;
     color: black;
@@ -66,4 +66,39 @@ button {
     margin-top: 25px;
     height: 80%;
     height: 80%;
+}
+.wrongAnswer h1, h3 {
+    background-color: #9479E8;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 5px; 
+    height: 50%;
+    width: 50%;
+}
+.hint {
+    background-color: #9479E8;
+    padding: 10px;
+    margin: auto;
+    height: 40%;
+    width: 40%;
+    font-size: 35px;
+}
+.wrongAnswer {
+    text-align: center;
+}
+
+.rightAnswer h1 {
+    background-color: #9479E8;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 5px; 
+    height: 30%;
+    width: 30%;
+}
+.rightAnswer {
+    text-align: center;
+}
+.joBro_image {
+    width: 50%;
+    height:50%;    
 }
