@@ -110,7 +110,7 @@ let questionNumber = 0;
 let userSelected = 1;
 
 function startQuiz () {
-    console.log('startQuiz working fine')
+    console.log('startQuiz is working fine')
     $('.quiz_container').hide()
     $('.scoreboard').hide()
     $('.rightAnswer').hide()
@@ -154,7 +154,7 @@ function wrongAnswer () {
     $('.tally').hide()
     $('.answer_form').hide()
     $('.wrongAnswer').show()
-    $('p').text(STORE[questionNumber].correctAnswer)
+    $('.hint').text(STORE[questionNumber].correctAnswer)
     $('.next_button').on('click', function () {
         console.log('next button working fine')
         $('.quiz_display').show()
@@ -180,15 +180,22 @@ function rightAnswer () {
 }
 
 function submitAnswer () {
+    console.log('submitAnswer is working fine')
     $('.submit_button').on('click', function () {
-        console.log('beep beep')
         if (STORE[questionNumber].correctAnswer === $("form input:checked").val()) {
-            console.log('you found the right answer')
             rightAnswer()
         } else {
-            console.log('you found the wrong answer')
             wrongAnswer()
         }
+    })
+}
+
+function results () {
+    if (STORE[9] > STORE[10]) {
+        alert('beep beep')
+    }
+    $('.next_button').on('click', function () {
+        alert('results will show')
     })
 }
 
