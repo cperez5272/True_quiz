@@ -189,10 +189,12 @@ function submitAnswer () {
         }
     })
 }
-
 function results () {
-    if (STORE[9] > STORE[10]) {
+    console.log('results is working')
+    if (questionNumber < STORE.length - 1) {
         alert('beep beep')
+    } else {
+        alert('boop boop')
     }
     $('.next_button').on('click', function () {
         alert('results will show')
