@@ -126,7 +126,6 @@ function startQuiz () {
     $(".answer_form").submit(function(event) {
         event.preventDefault()
         $('.answer').prop('checked', false)
-
         if (STORE[questionNumber].correctAnswer === $("form input:checked").val()) {
             console.log('going to rightAnswer function')
             rightAnswer()
