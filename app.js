@@ -119,9 +119,24 @@ function startQuiz () {
         console.log('button working');
         $('header').fadeOut('fast');
         renderQuestion();
-        $('.submit_button').click(function() {
-            nextQuestion()
-        })
+    })
+    $(".answer_form").submit(function(event) {
+        event.preventDefault()
+        $('.answer').prop('checked', false)
+
+        if (STORE[questionNumber].correctAnswer === $("form input:checked").val()) {
+            rightAnswer()
+        } else {
+            wrongAnswer()
+        }
+    })
+    console.log('results is working')
+    $('.next_button').on('click', function () {
+        if (questionNumber < STORE.length -1) {
+            alert('beep beep')
+        } else {
+            alert('boop boop')
+        }
     })
 }
 
@@ -141,10 +156,10 @@ function renderQuestion () {
 
         $('.answer_4').text(STORE[questionNumber].answers[3])
         $('.answer_4').val(STORE[questionNumber].answers[3])
-        $(".answer_form").submit(function(event) {
-            event.preventDefault()
-            $('.answer').prop('checked', false)
-        })
+        // $(".answer_form").submit(function(event) {
+        //     event.preventDefault()
+        //     $('.answer').prop('checked', false)
+        // })
     })
 }
 
@@ -155,21 +170,21 @@ function wrongAnswer () {
     $('.answer_form').hide()
     $('.wrongAnswer').show()
     $('.hint').text(STORE[questionNumber].correctAnswer)
-    $('.next_button').on('click', function () {
-        console.log('next button working fine')
-        // $('.quiz_display').show()
-        // $('.tally').show()
-        // $('.answer_form').show()
-        // $('.wrongAnswer').hide()
-        if (questionNumber < STORE.length - 1) {
-            $('.quiz_display').show()
-            $('.tally').show()
-            $('.answer_form').show()
-            $('.wrongAnswer').hide()
-     } else {
-     // show the results
-     }
-    })
+    // $('.next_button').on('click', function () {
+    //     console.log('next button working fine')
+    //     // $('.quiz_display').show()
+    //     // $('.tally').show()
+    //     // $('.answer_form').show()
+    //     // $('.wrongAnswer').hide()
+    //     if (questionNumber < STORE.length - 1) {
+    //         $('.quiz_display').show()
+    //         $('.tally').show()
+    //         $('.answer_form').show()
+    //         $('.wrongAnswer').hide()
+    //  } else {
+    //  // show the results
+    //  }
+    // })
 }
 
 function rightAnswer () {
@@ -178,21 +193,21 @@ function rightAnswer () {
     $('.tally').hide()
     $('.answer_form').hide()
     $('.rightAnswer').show()
-    $('.next_button').on('click', function () {
-        console.log('next button working fine')
-        // $('.quiz_display').show()
-        // $('.tally').show()
-        // $('.answer_form').show()
-        // $('.rightAnswer').hide()
-        if (questionNumber < STORE.length - 1) {
-            $('.quiz_display').show()
-            $('.tally').show()
-            $('.answer_form').show()
-            $('.wrongAnswer').hide()
-     } else {
-     // show the results
-     }
-    })
+    // $('.next_button').on('click', function () {
+    //     console.log('next button working fine')
+    //     // $('.quiz_display').show()
+    //     // $('.tally').show()
+    //     // $('.answer_form').show()
+    //     // $('.rightAnswer').hide()
+    //     if (questionNumber < STORE.length - 1) {
+    //         $('.quiz_display').show()
+    //         $('.tally').show()
+    //         $('.answer_form').show()
+    //         $('.wrongAnswer').hide()
+    //  } else {
+    //  // show the results
+    //  }
+    // })
 }
 
 function submitAnswer () {
@@ -206,14 +221,14 @@ function submitAnswer () {
     })
 }
 function results () {
-    console.log('results is working')
-    $('.next_button').on('click', function () {
-        if (questionNumber < STORE.length -1) {
-            alert('beep beep')
-        } else {
-            alert('boop boop')
-        }
-    })
+    // console.log('results is working')
+    // $('.next_button').on('click', function () {
+    //     if (questionNumber < STORE.length -1) {
+    //         alert('beep beep')
+    //     } else {
+    //         alert('boop boop')
+    //     }
+    // })
 }
 
 function nextQuestion () {
@@ -224,6 +239,5 @@ function nextQuestion () {
 //Where all the functions should be called
 function makeQuiz () {
     startQuiz();
-    submitAnswer();
 }
 $(makeQuiz)
