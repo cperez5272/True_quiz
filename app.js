@@ -103,11 +103,14 @@ const STORE = [
 ];
 // Everything above here is good!
 
-
 //set varaibles for both questions and score
 let score = 0;
 let questionNumber = 0;
 let userSelected = 1;
+
+console.log($("form input:checked"))
+$('.answer').prop('checked', 'value', true)
+console.log($("form input:checked"))
 
 function startQuiz () {
     console.log('startQuiz is working fine')
@@ -125,17 +128,20 @@ function startQuiz () {
         $('.answer').prop('checked', false)
 
         if (STORE[questionNumber].correctAnswer === $("form input:checked").val()) {
+            console.log('going to rightAnswer function')
             rightAnswer()
         } else {
+            console.log('going to wrongAnswer function')
             wrongAnswer()
         }
     })
-    console.log('results is working')
     $('.next_button').on('click', function () {
         if (questionNumber < STORE.length -1) {
-            alert('beep beep')
+            console.log('button working')
+            nextQuestion()
         } else {
-            alert('boop boop')
+            console.log('button working')
+            nextQuestion()
         }
     })
 }
@@ -211,14 +217,14 @@ function rightAnswer () {
 }
 
 function submitAnswer () {
-    console.log('submitAnswer is working fine')
-    $('.submit_button').on('click', function () {
-        if (STORE[questionNumber].correctAnswer === $("form input:checked").val()) {
-            rightAnswer()
-        } else {
-            wrongAnswer()
-        }
-    })
+    // console.log('submitAnswer is working fine')
+    // $('.submit_button').on('click', function () {
+    //     if (STORE[questionNumber].correctAnswer === $("form input:checked").val()) {
+    //         rightAnswer()
+    //     } else {
+    //         wrongAnswer()
+    //     }
+    // })
 }
 function results () {
     // console.log('results is working')
