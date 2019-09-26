@@ -157,10 +157,18 @@ function wrongAnswer () {
     $('.hint').text(STORE[questionNumber].correctAnswer)
     $('.next_button').on('click', function () {
         console.log('next button working fine')
-        $('.quiz_display').show()
-        $('.tally').show()
-        $('.answer_form').show()
-        $('.wrongAnswer').hide()
+        // $('.quiz_display').show()
+        // $('.tally').show()
+        // $('.answer_form').show()
+        // $('.wrongAnswer').hide()
+        if (questionNumber < STORE.length - 1) {
+            $('.quiz_display').show()
+            $('.tally').show()
+            $('.answer_form').show()
+            $('.wrongAnswer').hide()
+     } else {
+     // show the results
+     }
     })
 }
 
@@ -172,10 +180,18 @@ function rightAnswer () {
     $('.rightAnswer').show()
     $('.next_button').on('click', function () {
         console.log('next button working fine')
-        $('.quiz_display').show()
-        $('.tally').show()
-        $('.answer_form').show()
-        $('.rightAnswer').hide()
+        // $('.quiz_display').show()
+        // $('.tally').show()
+        // $('.answer_form').show()
+        // $('.rightAnswer').hide()
+        if (questionNumber < STORE.length - 1) {
+            $('.quiz_display').show()
+            $('.tally').show()
+            $('.answer_form').show()
+            $('.wrongAnswer').hide()
+     } else {
+     // show the results
+     }
     })
 }
 
@@ -191,13 +207,12 @@ function submitAnswer () {
 }
 function results () {
     console.log('results is working')
-    if (questionNumber < STORE.length - 1) {
-        alert('beep beep')
-    } else {
-        alert('boop boop')
-    }
     $('.next_button').on('click', function () {
-        alert('results will show')
+        if (questionNumber < STORE.length -1) {
+            alert('beep beep')
+        } else {
+            alert('boop boop')
+        }
     })
 }
 
