@@ -108,39 +108,41 @@ let score = 0;
 let questionNumber = 0;
 let userSelected = 1;
 
-console.log($("form input:checked"))
-$('.answer').prop('checked', 'value', true)
-console.log($("form input:checked"))
-
 function startQuiz () {
     console.log('startQuiz is working fine')
     $('.quiz_container').hide()
     $('.scoreboard').hide()
     $('.rightAnswer').hide()
     $('.wrongAnswer').hide()
+    $('.congrats').hide()
+    $('.defeat').hide()
     $('.start_quiz').click('submit', function (event) {
-        console.log('button working');
+        console.log('you clicked submit button');
         $('header').fadeOut('fast');
         renderQuestion();
     })
     $(".answer_form").submit(function(event) {
         event.preventDefault()
-        $('.answer').prop('checked', false)
         if (STORE[questionNumber].correctAnswer === $("form input:checked").val()) {
-            console.log('going to rightAnswer function')
             rightAnswer()
         } else {
-            console.log('going to wrongAnswer function')
-            wrongAnswer()
+            wrongAnswer() 
         }
     })
     $('.next_button').on('click', function () {
+        console.log('You clicked next button')
+        $('.quiz_display').show()
+        $('.tally').show()
+        $('.answer_form').show()
+        $('.wrongAnswer').hide()
+        $('.rightAnswer').hide()
+
         if (questionNumber < STORE.length -1) {
             console.log('button working')
             nextQuestion()
         } else {
-            console.log('button working')
-            nextQuestion()
+            console.log('button not working')
+            results()
         }
     })
 }
@@ -161,79 +163,34 @@ function renderQuestion () {
 
         $('.answer_4').text(STORE[questionNumber].answers[3])
         $('.answer_4').val(STORE[questionNumber].answers[3])
-        // $(".answer_form").submit(function(event) {
-        //     event.preventDefault()
-        //     $('.answer').prop('checked', false)
-        // })
     })
 }
 
 function wrongAnswer () {
-    console.log('wrongAnswer is working fine')
+    console.log('wrongAnswer is fine')
     $('.quiz_display').hide()
     $('.tally').hide()
     $('.answer_form').hide()
     $('.wrongAnswer').show()
     $('.hint').text(STORE[questionNumber].correctAnswer)
-    // $('.next_button').on('click', function () {
-    //     console.log('next button working fine')
-    //     // $('.quiz_display').show()
-    //     // $('.tally').show()
-    //     // $('.answer_form').show()
-    //     // $('.wrongAnswer').hide()
-    //     if (questionNumber < STORE.length - 1) {
-    //         $('.quiz_display').show()
-    //         $('.tally').show()
-    //         $('.answer_form').show()
-    //         $('.wrongAnswer').hide()
-    //  } else {
-    //  // show the results
-    //  }
-    // })
 }
 
 function rightAnswer () {
-    console.log('rightAnswer is working fine')
+    console.log('rightAnswer is fine')
     $('.quiz_display').hide()
     $('.tally').hide()
     $('.answer_form').hide()
     $('.rightAnswer').show()
-    // $('.next_button').on('click', function () {
-    //     console.log('next button working fine')
-    //     // $('.quiz_display').show()
-    //     // $('.tally').show()
-    //     // $('.answer_form').show()
-    //     // $('.rightAnswer').hide()
-    //     if (questionNumber < STORE.length - 1) {
-    //         $('.quiz_display').show()
-    //         $('.tally').show()
-    //         $('.answer_form').show()
-    //         $('.wrongAnswer').hide()
-    //  } else {
-    //  // show the results
-    //  }
-    // })
 }
 
 function submitAnswer () {
-    // console.log('submitAnswer is working fine')
-    // $('.submit_button').on('click', function () {
-    //     if (STORE[questionNumber].correctAnswer === $("form input:checked").val()) {
-    //         rightAnswer()
-    //     } else {
-    //         wrongAnswer()
-    //     }
-    // })
+
 }
 function results () {
-    // console.log('results is working')
-    // $('.next_button').on('click', function () {
-    //     if (questionNumber < STORE.length -1) {
-    //         alert('beep beep')
-    //     } else {
-    //         alert('boop boop')
-    //     }
-    // })
+    $('.quiz_display').hide()
+    $('.congrats').show()
+    $('.score_number').show()
+    $('.answer_form').hide()
 }
 
 function nextQuestion () {
