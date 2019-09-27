@@ -120,6 +120,7 @@ function startQuiz () {
         console.log('you clicked submit button');
         $('header').fadeOut('fast');
         renderQuestion();
+        $('.tally').html(`<p> Question: <span class="question_number">1</span>/10 <span>Score: </span><span class="score_number">0</span></p>`)
     })
     $(".answer_form").submit(function(event) {
         event.preventDefault()
@@ -128,10 +129,10 @@ function startQuiz () {
         } else {
             wrongAnswer() 
         }
+        $("input:radio").prop('checked', $(this).is(":checked"));
     })
     $('.next_button').on('click', function () {
         console.log('You clicked next button')
-        nextQuestion()
         $('.quiz_display').show()
         $('.tally').show()
         $('.answer_form').show()
@@ -186,20 +187,30 @@ function rightAnswer () {
 }
 
 function results () {
+    if (score >= 7) {
+        $('.congrats').show()
+    } else {
+        $('.defeat').show()
+    }
     $('.quiz_display').hide()
-    $('.congrats').show()
     $('.score_number').show()
     $('.answer_form').hide()
+    $('.tally').html(`<p> Question: <span class="question_number">10</span>/10 <span>Score: </span><span class="score_number">${score}</span></p>`)
+    $('.reset').click('submit', function (event) {
+        alert('you finsihed')
+    })
 }
 
 function nextQuestion () {
     questionNumber++
     renderQuestion()
+    $('.tally').html(`<p> Question: <span class="question_number">${questionNumber + 1}</span>/10 <span>Score: </span><span class="score_number">${score}</span></p>`)
 }
 
 function updateScore () {
     score++
-    renderQuestion()
+    $('.tally').html(`<p> Question: <span class="question_number">0</span>/10 <span>Score: </span><span class="score_number">${score}</span></p>`)
+    // renderQuestion()
 }
 
 //Where all the functions should be called
