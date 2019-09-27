@@ -196,9 +196,12 @@ function results () {
     $('.score_number').show()
     $('.answer_form').hide()
     $('.tally').html(`<p> Question: <span class="question_number">10</span>/10 <span>Score: </span><span class="score_number">${score}</span></p>`)
-    $('.reset').click('submit', function (event) {
-        alert('you finsihed')
-    })
+        $('.reset').click('submit', function () {
+            $('.starting_header').show()
+            $('.starting_quiz').show()
+            startQuiz()
+            
+        })
 }
 
 function nextQuestion () {
