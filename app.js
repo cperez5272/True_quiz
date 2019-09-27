@@ -116,9 +116,12 @@ function startQuiz () {
     $('.wrongAnswer').hide()
     $('.congrats').hide()
     $('.defeat').hide()
+    score = 0
+    question = 0
+    userSelected = 1
 }
 
-function makeQuiz() {
+function beginQuiz() {
     $('.start_quiz').click('submit', function (event) {
         $('quiz_display').show()
         $('.answer_form').show()
@@ -224,6 +227,7 @@ function updateScore () {
 //Where all the functions should be called
 function makeQuiz () {
     startQuiz();
+    beginQuiz();
     // listen()
 }
 $(makeQuiz)
