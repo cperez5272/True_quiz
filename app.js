@@ -125,6 +125,7 @@ function startQuiz () {
         event.preventDefault()
         if (STORE[questionNumber].correctAnswer === $("form input:checked").val()) {
             rightAnswer()
+            updateScore()
         } else {
             wrongAnswer() 
         }
@@ -183,9 +184,6 @@ function rightAnswer () {
     $('.rightAnswer').show()
 }
 
-function submitAnswer () {
-
-}
 function results () {
     $('.quiz_display').hide()
     $('.congrats').show()
@@ -195,6 +193,11 @@ function results () {
 
 function nextQuestion () {
     questionNumber++
+    renderQuestion()
+}
+
+function updateScore () {
+    score++
     renderQuestion()
 }
 
