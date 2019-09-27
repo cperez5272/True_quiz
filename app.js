@@ -116,7 +116,12 @@ function startQuiz () {
     $('.wrongAnswer').hide()
     $('.congrats').hide()
     $('.defeat').hide()
+}
+
+function makeQuiz() {
     $('.start_quiz').click('submit', function (event) {
+        $('quiz_display').show()
+        $('.answer_form').show()
         console.log('you clicked submit button');
         $('header').fadeOut('fast');
         renderQuestion();
@@ -219,5 +224,6 @@ function updateScore () {
 //Where all the functions should be called
 function makeQuiz () {
     startQuiz();
+    // listen()
 }
 $(makeQuiz)
