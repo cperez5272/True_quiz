@@ -125,13 +125,13 @@ function startQuiz () {
         event.preventDefault()
         if (STORE[questionNumber].correctAnswer === $("form input:checked").val()) {
             rightAnswer()
-            updateScore()
         } else {
             wrongAnswer() 
         }
     })
     $('.next_button').on('click', function () {
         console.log('You clicked next button')
+        nextQuestion()
         $('.quiz_display').show()
         $('.tally').show()
         $('.answer_form').show()
@@ -182,6 +182,7 @@ function rightAnswer () {
     $('.tally').hide()
     $('.answer_form').hide()
     $('.rightAnswer').show()
+    updateScore()
 }
 
 function results () {
