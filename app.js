@@ -1,3 +1,4 @@
+'use strict';
 // question database
 const STORE = [
     {
@@ -117,13 +118,13 @@ function startQuiz () {
     $('.congrats').hide()
     $('.defeat').hide()
     score = 0
-    question = 0
+    questionNumber = 0
     userSelected = 1
 }
 
 function beginQuiz() {
     $('.start_quiz').click('submit', function (event) {
-        $('quiz_display').show()
+        $('.quiz_display').show()
         $('.answer_form').show()
         console.log('you clicked submit button');
         $('header').fadeOut('fast');
